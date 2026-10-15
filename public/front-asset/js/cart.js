@@ -6,8 +6,7 @@ $(document).ready(function(){
         let price = $(this).data('price');
         let discount = $(this).data('discount');
         let image = $(this).data('image');
-
-
+        let qty = $('.qty').val();
         console.log(id, name, price);
 
         let items = {
@@ -16,7 +15,7 @@ $(document).ready(function(){
             price: price,
             discount: discount,
             image: image,
-            qty: 1
+            qty: qty
         }
 
         let itemString = localStorage.getItem('zayban');
@@ -30,7 +29,7 @@ $(document).ready(function(){
         let status = false;
         $.each(itemArray,function(i,v){
             if(v.id == id) {
-                v.qty++;
+                v.qty = Number(v.qty) + Number(qty);
                 status = true;
             }
         })
